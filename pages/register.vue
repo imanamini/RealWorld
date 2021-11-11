@@ -1,11 +1,10 @@
 <template>
   <div class='container d-flex justify-content-center align-items-center vh-100'>
     <div class='register mx-auto bg-silver'>
-      {{conventionToken()}}
       <div class='text-center color-warm-grey fs-47 line-height-56 mb-4'>
         Register
       </div>
-      <form @submit.stop.prevent='register()'>
+      <form @submit.prevent='register()'>
           <label class='fs-16 color-charcoal-grey pl-2 mt-4'>User</label>
           <input v-model='username' type='text' class='form-control' autocomplete='off'>
           <label class='fs-16 color-charcoal-grey pl-2 mt-4'>Email</label>
