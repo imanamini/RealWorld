@@ -15,7 +15,7 @@
       </form>
       <div class='fs-16 color-charcoal-grey line-height-19 mt-2 pt-1'>
         <span>Already Registered?</span>
-        <span class='font-weight-bold'>Login</span>
+        <nuxt-link to='/login'><span class='font-weight-bold'>Login</span></nuxt-link>
       </div>
     </div>
   </div>
@@ -66,5 +66,8 @@ export default {
 .register{
   width: 450px;
   padding: 35px 20px 20px 20px;
+}
+a{
+  color: unset;
 }
 </style>

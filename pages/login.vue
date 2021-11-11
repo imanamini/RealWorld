@@ -6,14 +6,16 @@
       </div>
       <form @submit.prevent='login()'>
         <label class='fs-16 color-charcoal-grey pl-2 mt-4'>Email</label>
-        <input v-model='email' type='email' class='form-control' autocomplete='off'>
+        <input v-model='email' type='email' class='form-control' autocomplete='off' required>
         <label class='fs-16 color-charcoal-grey pl-2 mt-4'>Password</label>
-        <input v-model='password' type='password' class='form-control' autocomplete='off'>
+        <input v-model='password' type='password' class='form-control' autocomplete='off' required>
         <input class='btn btn-primary w-100 mt-5' type="submit" value="Login">
       </form>
       <div class='fs-16 color-charcoal-grey line-height-19 mt-2 pt-1'>
         <span>Don’t have account?</span>
-        <span class='font-weight-bold'>Register Now</span>
+        <nuxt-link to='/register'>
+          <span class='font-weight-bold'>Register Now</span>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -62,5 +64,8 @@ export default {
 .login{
   width: 450px;
   padding: 35px 20px 20px 20px;
+}
+a{
+  color: unset;
 }
 </style>
