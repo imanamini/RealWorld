@@ -1,6 +1,6 @@
 <template>
   <div class='container d-flex justify-content-center align-items-center vh-100'>
-    <div class='mx-auto' style='background-color: #eceeef;width: 450px;padding: 35px 20px 20px 20px'>
+    <div class='mx-auto bg-silver' style='width: 450px;padding: 35px 20px 20px 20px'>
       <input v-model='email' class='form-control' placeholder='email'>
       <input v-model='username' class='form-control' placeholder='username'>
       <input v-model='password' class='form-control' placeholder='password'>
