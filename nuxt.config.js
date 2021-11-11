@@ -16,9 +16,9 @@ export default {
     ],
     script: [
       {
-        src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js',
+        src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
         integrity:
-          'sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF',
+          'sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM',
         crossorigin: 'anonymous',
       },
     ],
@@ -31,7 +31,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@plugins/bootstrap.js'],
+  plugins: ['@plugins/bootstrap.js','@plugins/index.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -53,7 +53,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL:'https://api.realworld.io/api/', // Used as fallback if no runtime config is provided
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

@@ -1,10 +1,11 @@
 <template>
   <div class='container d-flex justify-content-center align-items-center vh-100'>
     <div class='register mx-auto bg-silver'>
+      {{conventionToken()}}
       <div class='text-center color-warm-grey fs-47 line-height-56 mb-4'>
         Register
       </div>
-      <form>
+      <form @submit.stop.prevent='register()'>
           <label class='fs-16 color-charcoal-grey pl-2 mt-4'>User</label>
           <input v-model='username' type='text' class='form-control' autocomplete='off'>
           <label class='fs-16 color-charcoal-grey pl-2 mt-4'>Email</label>
@@ -32,6 +33,32 @@ export default {
     }
   },
   methods:{
+    /**
+     * Register user
+     *
+     * Author: Iman Amini
+     * last edit: 1400/08/21 by Iman Amini
+     * inspector:
+     *
+     */
+    register(){
+      this.$axios.post('users', {
+        user:{
+          username: this.username,
+          email: this.email,
+          password: this.password
+        }
+      })
+        .then((response) => {
+          if (response) {
+            this.conventionToken(response.data.user.token)
+            this.$router.push('/dashboard')
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   }
 }
 </script>
