@@ -10,24 +10,51 @@
         <label class="fs-16 color-charcoal-grey pl-2 mt-4">User</label>
         <input
           v-model="username"
+          :class="registerError || requiredUsername ? 'border-danger' : ''"
           type="text"
           class="form-control"
           autocomplete="off"
+          @keyup="requiredUsername = false"
         />
+        <span
+          v-show="registerError || requiredUsername"
+          class="position-absolute text-danger"
+        >{{
+            requiredUsername ? 'Required Field' : 'Email or password incorrect!'
+          }}</span
+        >
         <label class="fs-16 color-charcoal-grey pl-2 mt-4">Email</label>
         <input
           v-model="email"
+          :class="registerError || requiredEmail ? 'border-danger' : ''"
           type="email"
           class="form-control"
           autocomplete="off"
+          @keyup="requiredEmail = false"
         />
+        <span
+          v-show="registerError || requiredEmail"
+          class="position-absolute text-danger"
+        >{{
+            requiredEmail ? 'Required Field' : 'Email or password incorrect!'
+          }}</span
+        >
         <label class="fs-16 color-charcoal-grey pl-2 mt-4">Password</label>
         <input
           v-model="password"
+          :class="registerError || requiredPassword ? 'border-danger' : ''"
           type="password"
           class="form-control"
           autocomplete="off"
+          @keyup="requiredPassword = false"
         />
+        <span
+          v-show="registerError || requiredPassword"
+          class="position-absolute text-danger"
+        >{{
+            requiredPassword ? 'Required Field' : 'Email or password incorrect!'
+          }}</span
+        >
         <input
           class="btn btn-primary w-100 mt-5"
           type="submit"
@@ -41,6 +68,7 @@
         >
       </div>
     </div>
+    <ToastMessage/>
   </div>
 </template>
 
@@ -52,6 +80,10 @@ export default {
       email: '',
       username: '',
       password: '',
+      registerError: false,
+      requiredEmail: false,
+      requiredUsername: false,
+      requiredPassword: false,
     }
   },
   methods: {
@@ -64,6 +96,13 @@ export default {
      *
      */
     register() {
+      if (!this.email || !this.password || !this.username) {
+        if (!this.email) this.requiredEmail = true
+        if (!this.username) this.requiredUsername = true
+        if (!this.password) this.requiredPassword = true
+        this.$('.toast').toast('show')
+        return
+      }
       this.$axios
         .post('users', {
           user: {
@@ -78,8 +117,8 @@ export default {
             this.$router.push('/dashboard')
           }
         })
-        .catch((error) => {
-          console.log(error)
+        .catch(() => {
+          this.registerError = true
         })
     },
   },
@@ -93,5 +132,15 @@ export default {
 }
 a {
   color: unset;
+}
+.toast {
+  top: 30px;
+  right: 30px;
+  background-color: #efdfdf;
+  color: #9f4f48;
+  width: 456px;
+  padding: 15px 13px 15px 23px;
+  height: 49px;
+  max-width: unset;
 }
 </style>
