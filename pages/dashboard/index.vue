@@ -1,13 +1,11 @@
 <template>
-<div>{{ conventionToken() }}</div>
+  <div>{{ conventionToken() }}</div>
 </template>
 
 <script>
 export default {
-  layout:'dashboard'
+  layout: 'dashboard',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,6 +1,10 @@
 import { tools } from '~/plugins'
 export default function (context) {
-  if (context.route.fullPath !== '/login' && !tools.isAuthenticated() && context.route.fullPath !== '/register') {
+  if (
+    context.route.fullPath !== '/login' &&
+    !tools.isAuthenticated() &&
+    context.route.fullPath !== '/register'
+  ) {
     context.redirect({ path: '/login', status: 200 })
   }
 

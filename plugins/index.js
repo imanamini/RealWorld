@@ -26,7 +26,7 @@ const tools = {
         Cookie.set('token', token)
         localStorage.setItem('token', token)
       }
-      this.$axios.setHeader('Authorization',token)
+      this.$axios.setHeader('Authorization', token)
     } else if (process.server) {
       return this.$store.state.token
     } else {
@@ -80,4 +80,4 @@ Vue.use(vuex)
 if (process.client) {
   window.tools = tools
 }
-export { tools,$ }
+export { tools, $ }

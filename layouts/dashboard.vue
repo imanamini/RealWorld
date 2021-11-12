@@ -1,21 +1,20 @@
 <template>
   <div>
-    <header class='w-100' style='height: 50px'>
-      <button @click='logout()'>logout</button>
+    <header class="w-100" style="height: 50px">
+      <button @click="logout()">logout</button>
     </header>
     <Nuxt />
   </div>
 </template>
 
 <script>
-
 export default {
-  methods:{
-    logout(){
+  methods: {
+    logout() {
       this.conventionToken('')
       if (process.client) window.location.href = '/'
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -41,10 +40,11 @@ export default {
   color: #9880ff;
   box-shadow: 9999px 0 0 0 #9880ff;
   animation: dotFalling 1s infinite linear;
-  animation-delay: .1s;
+  animation-delay: 0.1s;
 }
 
-.dot-falling::before, .dot-falling::after {
+.dot-falling::before,
+.dot-falling::after {
   content: '';
   display: inline-block;
   position: absolute;
@@ -68,7 +68,7 @@ export default {
   background-color: #9880ff;
   color: #9880ff;
   animation: dotFallingAfter 1s infinite linear;
-  animation-delay: .2s;
+  animation-delay: 0.2s;
 }
 
 @keyframes dotFalling {
@@ -112,5 +112,4 @@ export default {
     box-shadow: 10014px 15px 0 0 rgba(152, 128, 255, 0);
   }
 }
-
 </style>
