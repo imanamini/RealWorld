@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import $ from 'jquery'
 import vuex from 'vuex'
+
 const Cookie = process.client ? require('js-cookie') : undefined
 const tools = {
   $,
@@ -89,6 +90,19 @@ const tools = {
     }
     return flag
   },
+  convertDate(date){
+    // let date: {
+    //   year = date.substring(0,3)
+    // }
+    const months = [ "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December" ];
+    const translateDate ={
+      year: date.substring(0, 4),
+      month: months[date.substring(5, 7) - 1],
+      day: date.substring(8, 10)
+    }
+    return translateDate.month+' ' + translateDate.day + ' ,' + translateDate.year
+  }
 }
 Vue.mixin({
   methods: {
