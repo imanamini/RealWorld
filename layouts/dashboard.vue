@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header/>
+    <Sidenav/>
     <Nuxt />
   </div>
 </template>

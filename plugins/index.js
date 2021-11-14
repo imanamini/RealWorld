@@ -69,6 +69,26 @@ const tools = {
       tools.conventionToken('')
     }
   },
+  /**
+   * Check url
+   *
+   * Check if url exist, return true
+   *
+   * Author: Iman Amini
+   * last edit: 1400/08/23 by Iman Amini
+   * inspector:
+   *
+   * @param page
+   * @return {boolean}
+   */
+  checkUrl(page) {
+    const url = this.$route.fullPath
+    let flag = false
+    if (url.includes(page)) {
+      flag = true
+    }
+    return flag
+  },
 }
 Vue.mixin({
   methods: {
