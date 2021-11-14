@@ -27,7 +27,6 @@ const tools = {
         Cookie.set('token', token)
         localStorage.setItem('token', token)
       }
-      this.$axios.setHeader('Authorization', token)
     } else if (process.server) {
       return this.$store.state.token
     } else {
@@ -90,19 +89,33 @@ const tools = {
     }
     return flag
   },
-  convertDate(date){
+  convertDate(date) {
     // let date: {
     //   year = date.substring(0,3)
     // }
-    const months = [ "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December" ];
-    const translateDate ={
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ]
+    const translateDate = {
       year: date.substring(0, 4),
       month: months[date.substring(5, 7) - 1],
-      day: date.substring(8, 10)
+      day: date.substring(8, 10),
     }
-    return translateDate.month+' ' + translateDate.day + ' ,' + translateDate.year
-  }
+    return (
+      translateDate.month + ' ' + translateDate.day + ' ,' + translateDate.year
+    )
+  },
 }
 Vue.mixin({
   methods: {
@@ -113,5 +126,12 @@ Vue.use(vuex)
 /** Sets client config */
 if (process.client) {
   window.tools = tools
+}
+export default ({ $axios, env }) => {
+  $axios.onRequest((config) => {
+    config.headers.common.Authorization = `Token ${
+      localStorage.getItem('token') || Cookie.get('token')
+    }`
+  })
 }
 export { tools, $ }

@@ -48,7 +48,7 @@
         </nuxt-link>
       </div>
     </div>
-    <ToastMessage/>
+    <ToastMessage />
   </div>
 </template>
 

@@ -19,7 +19,7 @@
         <span
           v-show="registerError || requiredUsername"
           class="position-absolute text-danger"
-        >{{
+          >{{
             requiredUsername ? 'Required Field' : 'Email or password incorrect!'
           }}</span
         >
@@ -35,7 +35,7 @@
         <span
           v-show="registerError || requiredEmail"
           class="position-absolute text-danger"
-        >{{
+          >{{
             requiredEmail ? 'Required Field' : 'Email or password incorrect!'
           }}</span
         >
@@ -51,7 +51,7 @@
         <span
           v-show="registerError || requiredPassword"
           class="position-absolute text-danger"
-        >{{
+          >{{
             requiredPassword ? 'Required Field' : 'Email or password incorrect!'
           }}</span
         >
@@ -68,7 +68,7 @@
         >
       </div>
     </div>
-    <ToastMessage/>
+    <ToastMessage />
   </div>
 </template>
 

@@ -7,14 +7,14 @@
   >
     <div
       class="
-          toast-body
-          fs-16
-          p-0
-          d-flex
-          align-items-center
-          justify-content-around
-          w-100
-        "
+        toast-body
+        fs-16
+        p-0
+        d-flex
+        align-items-center
+        justify-content-around
+        w-100
+      "
     >
       <span class="font-weight-bold mr-1"> Login Failed! </span>
       User name and/or Password is invalid
@@ -33,10 +33,8 @@
 
 <script>
 export default {
-  name: 'ToastMessage'
+  name: 'ToastMessage',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

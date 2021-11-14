@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <Header/>
-    <Sidenav/>
+  <div class="pb-5">
+    <Header />
+    <Sidenav />
     <Nuxt />
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style scoped>
