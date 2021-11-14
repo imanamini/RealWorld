@@ -1,20 +1,13 @@
 <template>
   <div>
-    <header class="w-100" style="height: 50px">
-      <button @click="logout()">logout</button>
-    </header>
+    <Header/>
     <Nuxt />
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    logout() {
-      this.conventionToken('')
-      if (process.client) window.location.href = '/'
-    },
-  },
+
 }
 </script>
 
