@@ -75,7 +75,7 @@ export default {
      * Login user
      *
      * Author: Iman Amini
-     * last edit: 1400/08/21 by Iman Amini
+     * last edit: 1400/08/25 by Iman Amini
      * inspector:
      *
      */
@@ -101,7 +101,6 @@ export default {
         })
         .catch(() => {
           this.loginError = true
-          this.$('.toast').toast('show')
         })
     },
   },

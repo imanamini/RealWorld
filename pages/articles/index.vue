@@ -1,8 +1,9 @@
 <template>
   <main class="pt-4">
     <div class="fs-40 line-height-48 mb-4 pb-1">All Posts</div>
-    <table class="table">
-      <thead class="thead-light">
+    <div class='table-responsive'>
+      <table class="table">
+        <thead class="thead-light">
         <tr>
           <th
             v-for="head in heads"
@@ -13,8 +14,8 @@
             {{ head }}
           </th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr v-for="(article, index) in articles" :key="article.title">
           <th scope="row">{{ index + 1 }}</th>
           <td>{{ article.title }}</td>
@@ -52,8 +53,9 @@
             </div>
           </td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
     <delete-modal @delete="deleteArticle" />
     <div
       id="toast"

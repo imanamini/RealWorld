@@ -68,7 +68,13 @@
         >
       </div>
     </div>
-    <ToastMessage />
+    <div
+      id="toast"
+      class="toast position-fixed align-items-center d-flex"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    ></div>
   </div>
 </template>
 
@@ -91,7 +97,7 @@ export default {
      * Register user
      *
      * Author: Iman Amini
-     * last edit: 1400/08/21 by Iman Amini
+     * last edit: 1400/08/25 by Iman Amini
      * inspector:
      *
      */
@@ -100,7 +106,7 @@ export default {
         if (!this.email) this.requiredEmail = true
         if (!this.username) this.requiredUsername = true
         if (!this.password) this.requiredPassword = true
-        this.$('.toast').toast('show')
+        this.showToastMessage('<b>Register Failed!</b> User name and/or Password is invalid',true)
         return
       }
       this.$axios
