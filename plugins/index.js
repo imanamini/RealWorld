@@ -89,6 +89,16 @@ const tools = {
     }
     return flag
   },
+  showToastMessage(text){
+    // const toast = this.$('.toast-body')
+    const toast = document.createElement('div')
+    toast.innerHTML = '<div class="toast-body fs-16 p-0 d-flex align-items-center justify-content-around w-100"><span style="color: #4b713d">'+
+      text
+      +
+      '</span></div>'
+    document.getElementById('toast').appendChild(toast)
+    this.$('.toast').toast('show')
+  },
   convertDate(date) {
     // let date: {
     //   year = date.substring(0,3)

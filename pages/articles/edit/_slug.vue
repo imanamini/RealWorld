@@ -1,9 +1,9 @@
 <template>
   <main class="pt-4">
-    <div class="fs-40 line-height-48 mb-4 pb-1">New Article</div>
+    <div class="fs-40 line-height-48 mb-4 pb-1">Edit Article</div>
     <div class="row">
-      <form class="col-9" @submit.prevent="save()">
-        <label class='line-height-18'>Title</label>
+      <form class="col-9" @submit.prevent="update()">
+        <label :class="titleError ? 'text-danger' : ''" class='line-height-18'>Title</label>
         <input
           v-model="post.title"
           :class="titleError ? 'border-danger' : ''"
@@ -14,7 +14,7 @@
         <span v-show="titleError" class="position-absolute text-danger">
           Required field
         </span>
-        <label  class="mt-5 line-height-18">Description</label>
+        <label :class="descriptionError ? 'text-danger' : ''" class="mt-5 line-height-18">Description</label>
         <input
           v-model="post.description"
           :class="descriptionError ? 'border-danger' : ''"
@@ -23,9 +23,9 @@
           @keyup="cleanErrors('descriptionError')"
         />
         <span v-show="descriptionError" class="position-absolute text-danger"
-          >Required field</span
+        >Required field</span
         >
-        <label class="mt-4 line-height-18">Body</label>
+        <label :class="bodyError ? 'text-danger' : ''" class="mt-4 line-height-18">Body</label>
         <textarea
           v-model="post.body"
           :class="bodyError ? 'border-danger' : ''"
@@ -34,7 +34,7 @@
           @keyup="cleanErrors('bodyError')"
         />
         <span v-show="bodyError" class="position-absolute text-danger"
-          >Required field</span
+        >Required field</span
         >
         <input class="btn btn-primary mt-4 px-4" type="submit" value="Submit" />
       </form>
@@ -60,8 +60,8 @@
               class="form-check-input"
             />
             <label class="form-check-label" :for="'check' + tag">{{
-              tag
-            }}</label>
+                tag
+              }}</label>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
 
 <script>
 export default {
-  name: 'Index',
+  name: 'Slug',
   layout: 'dashboard',
   data() {
     return {
@@ -99,6 +99,16 @@ export default {
         }
       })
       .catch(() => {})
+    this.$axios
+      .get('articles/'+this.$route.params.slug)
+      .then((response) => {
+        if (response) {
+          this.post = response.data.article
+          // this.conventionToken(response.data.user.token)
+          // this.$router.push('/dashboard')
+        }
+      })
+      .catch(() => {})
   },
   methods: {
     cleanErrors(error) {
@@ -121,29 +131,29 @@ export default {
       this.tags.sort((a, b) => a.localeCompare(b))
       this.newTag = ''
     },
-    save() {
+    update() {
+      if (!this.post.description || !this.post.body || !this.post.title) {
+        if (!this.post.description) this.descriptionError = true
+        if (!this.post.title) this.titleError = true
+        if (!this.post.body) this.bodyError = true
+        return
+      }
       this.$('input[type=submit]').prop('disabled', true)
       this.$axios
-        .post('articles', {
+        .put('articles/'+this.$route.params.slug, {
           article: this.post,
         })
         .then((response) => {
           if (response) {
             this.$('input[type=submit]').prop('disabled', false)
-            // this.conventionToken(response.data.user.token)
-            this.$router.push('/dashboard/articles')
+            this.$router.push('/articles')
+            setTimeout(()=>{
+              this.showToastMessage('<b>Well done!</b> Article updated successfully')
+            },2000)
           }
         })
-        .catch((error) => {
-          if (error.response.data.errors.description) {
-            this.descriptionError = true
-          }
-          if (error.response.data.errors.title) {
-            this.titleError = true
-          }
-          if (error.response.data.errors.body) {
-            this.bodyError = true
-          }
+        .catch(() => {
+
         })
     },
   },

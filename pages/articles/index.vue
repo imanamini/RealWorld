@@ -35,7 +35,9 @@
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <div class="dropdown-menu dropdown-menu-right py-0">
-                <button class="dropdown-item">Edit</button>
+                <nuxt-link :to='"articles/edit/"+article.slug'>
+                  <button class="dropdown-item">Edit</button>
+                </nuxt-link>
                 <div class="dropdown-divider my-0"></div>
                 <button type="button" class="dropdown-item" data-toggle="modal" data-target="#DeleteModal" @click='deleteSlug = article.slug'>
                   Delete
@@ -47,6 +49,14 @@
       </tbody>
     </table>
     <delete-modal @delete='deleteArticle'/>
+    <div
+      id='toast'
+      class="toast position-fixed align-items-center d-flex"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+    </div>
   </main>
 </template>
 
@@ -58,7 +68,8 @@ export default {
     return {
       heads: ['#', 'title', 'author', 'tags', 'excerpt', 'created', ''],
       articles: [],
-      deleteSlug:''
+      deleteSlug:'',
+      toastText:''
     }
   },
   mounted() {
@@ -79,6 +90,7 @@ export default {
       this.$axios.delete('articles/'+this.deleteSlug)
         .then(() => {
           this.getArticles()
+          this.showToastMessage('Article deleted successfully')
         });
     },
     /**
@@ -117,5 +129,19 @@ main {
   padding-bottom: 13px;
   padding-left: 15px;
   line-height: 1;
+}
+.toast {
+  top: 80px;
+  right: 30px;
+  background-color: #d5e6c7;
+  padding: 16px 20px;
+  height: 49px;
+  max-width: unset;
+}
+a {
+  color: unset;
+}
+a:hover{
+  text-decoration: none;
 }
 </style>
