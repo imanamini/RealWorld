@@ -90,7 +90,7 @@ export default {
         .then((response) => {
           if (response) {
             this.conventionToken(response.data.user.token)
-            this.$router.push('/dashboard')
+            this.$router.push('/articles')
           }
         })
         .catch(() => {

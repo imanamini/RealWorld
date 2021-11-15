@@ -1,9 +1,9 @@
 <template>
   <header>
     <span class="fs-22 text-white">Arvan Challenge</span>
-    <span class="fs-16 text-white ml-3 pl-1"
-      >Welcome {{ parseJwt().username }}</span
-    >
+    <span class="fs-16 text-white ml-3 pl-1">
+      Welcome {{ parseJwt().username }}
+    </span>
     <button class="btn btn-logOut ml-auto" @click="logout()">logout</button>
   </header>
 </template>
@@ -14,7 +14,7 @@ export default {
   methods: {
     logout() {
       this.conventionToken('')
-      if (process.client) window.location.href = '/'
+      window.location.href = '/'
     },
   },
 }

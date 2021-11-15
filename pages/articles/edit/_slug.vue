@@ -3,7 +3,9 @@
     <div class="fs-40 line-height-48 mb-4 pb-1">Edit Article</div>
     <div class="row">
       <form class="col-9" @submit.prevent="update()">
-        <label :class="titleError ? 'text-danger' : ''" class='line-height-18'>Title</label>
+        <label :class="titleError ? 'text-danger' : ''" class="line-height-18"
+          >Title</label
+        >
         <input
           v-model="post.title"
           :class="titleError ? 'border-danger' : ''"
@@ -14,7 +16,11 @@
         <span v-show="titleError" class="position-absolute text-danger">
           Required field
         </span>
-        <label :class="descriptionError ? 'text-danger' : ''" class="mt-5 line-height-18">Description</label>
+        <label
+          :class="descriptionError ? 'text-danger' : ''"
+          class="mt-5 line-height-18"
+          >Description</label
+        >
         <input
           v-model="post.description"
           :class="descriptionError ? 'border-danger' : ''"
@@ -23,9 +29,13 @@
           @keyup="cleanErrors('descriptionError')"
         />
         <span v-show="descriptionError" class="position-absolute text-danger"
-        >Required field</span
+          >Required field</span
         >
-        <label :class="bodyError ? 'text-danger' : ''" class="mt-4 line-height-18">Body</label>
+        <label
+          :class="bodyError ? 'text-danger' : ''"
+          class="mt-4 line-height-18"
+          >Body</label
+        >
         <textarea
           v-model="post.body"
           :class="bodyError ? 'border-danger' : ''"
@@ -34,12 +44,12 @@
           @keyup="cleanErrors('bodyError')"
         />
         <span v-show="bodyError" class="position-absolute text-danger"
-        >Required field</span
+          >Required field</span
         >
         <input class="btn btn-primary mt-4 px-4" type="submit" value="Submit" />
       </form>
       <div class="col-3">
-        <label class='line-height-18'>Tags</label>
+        <label class="line-height-18">Tags</label>
         <input
           v-model="newTag"
           class="form-control"
@@ -60,8 +70,8 @@
               class="form-check-input"
             />
             <label class="form-check-label" :for="'check' + tag">{{
-                tag
-              }}</label>
+              tag
+            }}</label>
           </div>
         </div>
       </div>
@@ -100,7 +110,7 @@ export default {
       })
       .catch(() => {})
     this.$axios
-      .get('articles/'+this.$route.params.slug)
+      .get('articles/' + this.$route.params.slug)
       .then((response) => {
         if (response) {
           this.post = response.data.article
@@ -114,14 +124,14 @@ export default {
     cleanErrors(error) {
       switch (error) {
         case 'titleError':
-          this.titleError = false;
-          break;
+          this.titleError = false
+          break
         case 'descriptionError':
-          this.descriptionError = false;
-          break;
+          this.descriptionError = false
+          break
         case 'bodyError':
-          this.bodyError = false;
-          break;
+          this.bodyError = false
+          break
       }
       this.$('input[type=submit]').prop('disabled', false)
     },
@@ -140,21 +150,21 @@ export default {
       }
       this.$('input[type=submit]').prop('disabled', true)
       this.$axios
-        .put('articles/'+this.$route.params.slug, {
+        .put('articles/' + this.$route.params.slug, {
           article: this.post,
         })
         .then((response) => {
           if (response) {
             this.$('input[type=submit]').prop('disabled', false)
             this.$router.push('/articles')
-            setTimeout(()=>{
-              this.showToastMessage('<b>Well done!</b> Article updated successfully')
-            },2000)
+            setTimeout(() => {
+              this.showToastMessage(
+                '<b>Well done!</b> Article updated successfully'
+              )
+            }, 2000)
           }
         })
-        .catch(() => {
-
-        })
+        .catch(() => {})
     },
   },
 }
@@ -173,10 +183,10 @@ textarea {
   height: 207px;
   resize: none;
 }
-.form-group{
+.form-group {
   margin-bottom: 12px;
 }
-input.form-control{
+input.form-control {
   height: 40px;
 }
 </style>

@@ -89,12 +89,12 @@ const tools = {
     }
     return flag
   },
-  showToastMessage(text){
-    this.$('.toast-body').remove();
+  showToastMessage(text) {
+    this.$('.toast-body').remove()
     const toast = document.createElement('div')
-    toast.innerHTML = '<div class="toast-body fs-16 p-0 d-flex align-items-center justify-content-around w-100"><span style="color: #4b713d">'+
-      text
-      +
+    toast.innerHTML =
+      '<div class="toast-body fs-16 p-0 d-flex align-items-center justify-content-around w-100"><span style="color: #4b713d">' +
+      text +
       '</span></div>'
     document.getElementById('toast').append(toast)
     this.$('.toast').toast('show')

@@ -35,11 +35,17 @@
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <div class="dropdown-menu dropdown-menu-right py-0">
-                <nuxt-link :to='"articles/edit/"+article.slug'>
+                <nuxt-link :to="'articles/edit/' + article.slug">
                   <button class="dropdown-item">Edit</button>
                 </nuxt-link>
                 <div class="dropdown-divider my-0"></div>
-                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#DeleteModal" @click='deleteSlug = article.slug'>
+                <button
+                  type="button"
+                  class="dropdown-item"
+                  data-toggle="modal"
+                  data-target="#DeleteModal"
+                  @click="deleteSlug = article.slug"
+                >
                   Delete
                 </button>
               </div>
@@ -48,15 +54,14 @@
         </tr>
       </tbody>
     </table>
-    <delete-modal @delete='deleteArticle'/>
+    <delete-modal @delete="deleteArticle" />
     <div
-      id='toast'
+      id="toast"
       class="toast position-fixed align-items-center d-flex"
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
-    >
-    </div>
+    ></div>
   </main>
 </template>
 
@@ -68,14 +73,14 @@ export default {
     return {
       heads: ['#', 'title', 'author', 'tags', 'excerpt', 'created', ''],
       articles: [],
-      deleteSlug:'',
-      toastText:''
+      deleteSlug: '',
+      toastText: '',
     }
   },
   mounted() {
     this.getArticles()
   },
-  methods:{
+  methods: {
     /**
      * Delete articles
      *
@@ -86,12 +91,11 @@ export default {
      * inspector:
      *
      */
-    deleteArticle(){
-      this.$axios.delete('articles/'+this.deleteSlug)
-        .then(() => {
-          this.getArticles()
-          this.showToastMessage('Article deleted successfully')
-        });
+    deleteArticle() {
+      this.$axios.delete('articles/' + this.deleteSlug).then(() => {
+        this.getArticles()
+        this.showToastMessage('Article deleted successfully')
+      })
     },
     /**
      * Get articles
@@ -101,7 +105,7 @@ export default {
      * inspector:
      *
      */
-    getArticles(){
+    getArticles() {
       this.$axios
         .get('articles')
         .then((response) => {
@@ -112,8 +116,8 @@ export default {
         .catch(() => {
           this.registerError = true
         })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -141,7 +145,7 @@ main {
 a {
   color: unset;
 }
-a:hover{
+a:hover {
   text-decoration: none;
 }
 </style>
