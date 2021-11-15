@@ -89,20 +89,23 @@ const tools = {
     }
     return flag
   },
-  showToastMessage(text) {
-    this.$('.toast-body').remove()
-    const toast = document.createElement('div')
-    toast.innerHTML =
-      '<div class="toast-body fs-16 p-0 d-flex align-items-center justify-content-around w-100"><span style="color: #4b713d">' +
+  showToastMessage(text,close = false) {
+    this.$('.toast').append(
+      '<div class="toast-body fs-16 p-0 d-flex align-items-center justify-content-around w-100"><span>' +
       text +
       '</span></div>'
-    document.getElementById('toast').append(toast)
+    )
+    if (close){
+      this.$('.toast-body').append(
+        '<button type="button" class="ml-auto mb-1 close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span></button>'
+      )
+      this.$( ".toast-body button" ).click(()=> {
+        this.$('.toast').toast('hide')
+      });
+    }
     this.$('.toast').toast('show')
   },
   convertDate(date) {
-    // let date: {
-    //   year = date.substring(0,3)
-    // }
     const months = [
       'January',
       'February',

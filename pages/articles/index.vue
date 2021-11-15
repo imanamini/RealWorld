@@ -138,6 +138,7 @@ main {
   top: 80px;
   right: 30px;
   background-color: #d5e6c7;
+  color: #4b713d;
   padding: 16px 20px;
   height: 49px;
   max-width: unset;

@@ -48,7 +48,13 @@
         </nuxt-link>
       </div>
     </div>
-    <ToastMessage />
+    <div
+      id="toast"
+      class="toast position-fixed align-items-center d-flex"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    ></div>
   </div>
 </template>
 
@@ -77,7 +83,7 @@ export default {
       if (!this.email || !this.password) {
         if (!this.email) this.requiredEmail = true
         if (!this.password) this.requiredPassword = true
-        this.$('.toast').toast('show')
+        this.showToastMessage('<b>Login Failed!</b> User name and/or Password is invalid',true)
         return
       }
       this.$axios
