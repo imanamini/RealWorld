@@ -89,19 +89,19 @@ const tools = {
     }
     return flag
   },
-  showToastMessage(text,close = false) {
+  showToastMessage(text, close = false) {
     this.$('.toast').append(
       '<div class="toast-body fs-16 p-0 d-flex align-items-center justify-content-around w-100"><span>' +
-      text +
-      '</span></div>'
+        text +
+        '</span></div>'
     )
-    if (close){
+    if (close) {
       this.$('.toast-body').append(
         '<button type="button" class="ml-auto mb-1 close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span></button>'
       )
-      this.$( ".toast-body button" ).click(()=> {
+      this.$('.toast-body button').click(() => {
         this.$('.toast').toast('hide')
-      });
+      })
     }
     this.$('.toast').toast('show')
   },

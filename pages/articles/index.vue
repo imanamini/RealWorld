@@ -1,58 +1,58 @@
 <template>
   <main class="pt-4">
     <div class="fs-40 line-height-48 mb-4 pb-1">All Posts</div>
-    <div class='table-responsive'>
+    <div class="table-responsive">
       <table class="table">
         <thead class="thead-light">
-        <tr>
-          <th
-            v-for="head in heads"
-            :key="head"
-            style="text-transform: capitalize"
-            scope="col"
-          >
-            {{ head }}
-          </th>
-        </tr>
+          <tr>
+            <th
+              v-for="head in heads"
+              :key="head"
+              style="text-transform: capitalize"
+              scope="col"
+            >
+              {{ head }}
+            </th>
+          </tr>
         </thead>
         <tbody>
-        <tr v-for="(article, index) in articles" :key="article.title">
-          <th scope="row">{{ index + 1 }}</th>
-          <td>{{ article.title }}</td>
-          <td>@{{ article.author.username }}</td>
-          <td>{{ article.tagList.toString() }}</td>
-          <td>{{ article.body.substring(0, 19) }}...</td>
-          <td>{{ convertDate(article.createdAt) }}</td>
-          <td>
-            <div class="btn-group float-right">
-              <button type="button" class="btn btn-info">...</button>
-              <button
-                type="button"
-                class="btn btn-info dropdown-toggle dropdown-toggle-split"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right py-0">
-                <nuxt-link :to="'articles/edit/' + article.slug">
-                  <button class="dropdown-item">Edit</button>
-                </nuxt-link>
-                <div class="dropdown-divider my-0"></div>
+          <tr v-for="(article, index) in articles" :key="article.title">
+            <th scope="row">{{ index + 1 }}</th>
+            <td>{{ article.title }}</td>
+            <td>@{{ article.author.username }}</td>
+            <td>{{ article.tagList.toString() }}</td>
+            <td>{{ article.body.substring(0, 19) }}...</td>
+            <td>{{ convertDate(article.createdAt) }}</td>
+            <td>
+              <div class="btn-group float-right">
+                <button type="button" class="btn btn-info">...</button>
                 <button
                   type="button"
-                  class="dropdown-item"
-                  data-toggle="modal"
-                  data-target="#DeleteModal"
-                  @click="deleteSlug = article.slug"
+                  class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  Delete
+                  <span class="sr-only">Toggle Dropdown</span>
                 </button>
+                <div class="dropdown-menu dropdown-menu-right py-0">
+                  <nuxt-link :to="'articles/edit/' + article.slug">
+                    <button class="dropdown-item">Edit</button>
+                  </nuxt-link>
+                  <div class="dropdown-divider my-0"></div>
+                  <button
+                    type="button"
+                    class="dropdown-item"
+                    data-toggle="modal"
+                    data-target="#DeleteModal"
+                    @click="deleteSlug = article.slug"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

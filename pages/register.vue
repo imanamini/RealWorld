@@ -106,7 +106,10 @@ export default {
         if (!this.email) this.requiredEmail = true
         if (!this.username) this.requiredUsername = true
         if (!this.password) this.requiredPassword = true
-        this.showToastMessage('<b>Register Failed!</b> User name and/or Password is invalid',true)
+        this.showToastMessage(
+          '<b>Register Failed!</b> User name and/or Password is invalid',
+          true
+        )
         return
       }
       this.$axios

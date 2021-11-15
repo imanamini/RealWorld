@@ -99,18 +99,19 @@ export default {
     }
   },
   mounted() {
-    this.$axios
-      .get('tags')
-      .then((response) => {
-        if (response) {
-          this.tags = response.data.tags
-          // this.conventionToken(response.data.user.token)
-          // this.$router.push('/dashboard')
-        }
-      })
-      .catch(() => {})
+    this.getTags()
   },
   methods: {
+    getTags() {
+      this.$axios
+        .get('tags')
+        .then((response) => {
+          if (response) {
+            this.tags = response.data.tags
+          }
+        })
+        .catch(() => {})
+    },
     cleanErrors(error) {
       switch (error) {
         case 'titleError':

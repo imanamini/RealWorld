@@ -83,7 +83,10 @@ export default {
       if (!this.email || !this.password) {
         if (!this.email) this.requiredEmail = true
         if (!this.password) this.requiredPassword = true
-        this.showToastMessage('<b>Login Failed!</b> User name and/or Password is invalid',true)
+        this.showToastMessage(
+          '<b>Login Failed!</b> User name and/or Password is invalid',
+          true
+        )
         return
       }
       this.$axios
