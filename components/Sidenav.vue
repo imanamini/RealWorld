@@ -1,8 +1,7 @@
 <template>
   <div class="sidenav">
     <div class="fs-22 text-white mb-3 ml-3 pl-1">Post</div>
-    <nuxt-link to="/articles">
-      <button
+      <nuxt-link to="/articles"
         :class="
           !checkUrl('create') && !checkUrl('edit')
             ? 'sidenav__btn-navigate--active'
@@ -11,10 +10,8 @@
         class="btn text-left text-white fs-18 sidenav__btn-navigate"
       >
         All Articles
-      </button>
-    </nuxt-link>
-    <nuxt-link to="/articles/create">
-      <button
+      </nuxt-link>
+      <nuxt-link to="/articles/create"
         :class="
           checkUrl('create') || checkUrl('edit')
             ? 'sidenav__btn-navigate--active'
@@ -23,8 +20,7 @@
         class="btn text-left text-white fs-18 sidenav__btn-navigate"
       >
         New Article
-      </button>
-    </nuxt-link>
+      </nuxt-link>
   </div>
 </template>
 

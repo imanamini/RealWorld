@@ -4,7 +4,7 @@
     <span class="fs-16 text-white ml-3 pl-1">
       Welcome {{ parseJwt().username }}
     </span>
-    <button class="btn btn-logOut ml-auto" @click="logout()">logout</button>
+    <button class="btn btn-logout ml-auto" @click="logout()">logout</button>
   </header>
 </template>
 
@@ -31,7 +31,7 @@ header {
   display: flex;
   align-items: center;
 }
-.btn-logOut {
+.btn-logout {
   border: 1px solid #5bc0de;
   color: #5bc0de;
   height: 40px;
