@@ -37,25 +37,16 @@
               <div class="dropdown-menu dropdown-menu-right py-0">
                 <button class="dropdown-item">Edit</button>
                 <div class="dropdown-divider my-0"></div>
-                <button class="dropdown-item">Delete</button>
+                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#DeleteModal" @click='deleteSlug = article.slug'>
+                  Delete
+                </button>
               </div>
             </div>
           </td>
         </tr>
-        <!--    <tr>-->
-        <!--      <th scope="row">2</th>-->
-        <!--      <td>Jacob</td>-->
-        <!--      <td>Thornton</td>-->
-        <!--      <td>@fat</td>-->
-        <!--    </tr>-->
-        <!--    <tr>-->
-        <!--      <th scope="row">3</th>-->
-        <!--      <td>Larry</td>-->
-        <!--      <td>the Bird</td>-->
-        <!--      <td>@twitter</td>-->
-        <!--    </tr>-->
       </tbody>
     </table>
+    <delete-modal @delete='deleteArticle'/>
   </main>
 </template>
 
@@ -67,22 +58,50 @@ export default {
     return {
       heads: ['#', 'title', 'author', 'tags', 'excerpt', 'created', ''],
       articles: [],
+      deleteSlug:''
     }
   },
   mounted() {
-    this.$axios
-      .get('articles')
-      .then((response) => {
-        if (response) {
-          this.articles = response.data.articles
-          // this.conventionToken(response.data.user.token)
-          // this.$router.push('/dashboard')
-        }
-      })
-      .catch(() => {
-        this.registerError = true
-      })
+    this.getArticles()
   },
+  methods:{
+    /**
+     * Delete articles
+     *
+     * After click "Yes" in <DeleteModal> this function call.
+     *
+     * Author: Iman Amini
+     * last edit: 1400/08/24 by Iman Amini
+     * inspector:
+     *
+     */
+    deleteArticle(){
+      this.$axios.delete('articles/'+this.deleteSlug)
+        .then(() => {
+          this.getArticles()
+        });
+    },
+    /**
+     * Get articles
+     *
+     * Author: Iman Amini
+     * last edit: 1400/08/22 by Iman Amini
+     * inspector:
+     *
+     */
+    getArticles(){
+      this.$axios
+        .get('articles')
+        .then((response) => {
+          if (response) {
+            this.articles = response.data.articles
+          }
+        })
+        .catch(() => {
+          this.registerError = true
+        })
+    }
+  }
 }
 </script>
 
