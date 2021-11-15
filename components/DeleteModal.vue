@@ -1,5 +1,5 @@
 <template>
-  <div id="DeleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div id="DeleteModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -8,12 +8,12 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body fs-16 color-charcoal-grey">
+        <div class="modal-body fs-16 color-charcoal-grey line-height-1 ml-1">
           Are you sure to delete Article?
         </div>
-        <div class="modal-footer py-3">
-          <button type="button" class="btn btn-secondary px-4" data-dismiss="modal">No</button>
-          <button type="button" class="btn btn-danger px-4 ml-3" data-dismiss="modal" @click='$emit("delete")'>Yes</button>
+        <div class="modal-footer p-3">
+          <button type="button" class="btn btn-outline-secondary px-4 my-0" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger px-4 ml-3 my-0 mr-0" data-dismiss="modal" @click='$emit("delete")'>Yes</button>
         </div>
       </div>
     </div>

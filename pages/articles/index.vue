@@ -23,7 +23,7 @@
           <td>{{ article.body.substring(0, 19) }}...</td>
           <td>{{ convertDate(article.createdAt) }}</td>
           <td>
-            <div class="btn-group">
+            <div class="btn-group float-right">
               <button type="button" class="btn btn-info">...</button>
               <button
                 type="button"

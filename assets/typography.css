@@ -83,7 +83,9 @@
   font-size: 47px;
 }
 
-
+.line-height-1{
+  line-height: 1;
+}
 .line-height-18 {
   line-height: 18px;
 }
