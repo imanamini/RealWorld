@@ -43,11 +43,4 @@ main {
   margin-left: 281px;
   padding-right: 30px;
 }
-.card {
-  height: 355px;
-  overflow: auto;
-}
-.form-group {
-  margin-bottom: 12px;
-}
 </style>

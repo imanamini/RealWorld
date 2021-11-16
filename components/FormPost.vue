@@ -160,4 +160,11 @@ textarea {
 input.form-control {
   height: 40px;
 }
+.card {
+  height: 355px;
+  overflow: auto;
+}
+.form-group {
+  margin-bottom: 12px;
+}
 </style>

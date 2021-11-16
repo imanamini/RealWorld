@@ -63,18 +63,4 @@ main {
   margin-left: 281px;
   padding-right: 30px;
 }
-.card {
-  height: 355px;
-  overflow: auto;
-}
-textarea {
-  height: 207px;
-  resize: none;
-}
-.form-group {
-  margin-bottom: 12px;
-}
-input.form-control {
-  height: 40px;
-}
 </style>
