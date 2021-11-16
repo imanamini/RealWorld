@@ -10,6 +10,15 @@ export default {
   name: 'Index',
   layout: 'dashboard',
   methods: {
+    /**
+     * Create post
+     *
+     * Author: Iman Amini
+     * last edit: 1400/08/26 by Iman Amini
+     * inspector:
+     *
+     * @param post {Object} is post data
+     */
     createPost(post) {
       this.$('input[type=submit]').prop('disabled', true)
       this.$axios
@@ -27,7 +36,9 @@ export default {
             }, 2000)
           }
         })
-        .catch(() => {})
+        .catch((error) => {
+          console.log(error)
+        })
     },
   },
 }

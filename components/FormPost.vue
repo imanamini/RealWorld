@@ -117,7 +117,9 @@ export default {
             this.tags = response.data.tags
           }
         })
-        .catch(() => {})
+        .catch((error) => {
+          console.log(error)
+        })
     },
     addTag() {
       this.tags.push(this.newTag)

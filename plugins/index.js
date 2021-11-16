@@ -89,6 +89,16 @@ const tools = {
     }
     return flag
   },
+  /**
+   * Show toast message after call api
+   *
+   * Author: Iman Amini
+   * last edit: 1400/08/26 by Iman Amini
+   * inspector:
+   *
+   * @param text {String} is text show in toast body
+   * @param close {Boolean} is close icon must be or not
+   */
   showToastMessage(text, close = false) {
     this.$('.toast').append(
       '<div class="toast-body fs-16 p-0 d-flex align-items-center justify-content-around w-100"><span>' +
@@ -105,6 +115,14 @@ const tools = {
     }
     this.$('.toast').toast('show')
   },
+  /**
+   * Convert date
+   *
+   * Convert date that we get from api to date that we must show in page
+   *
+   * @param date {String} is date data get from api
+   * @return {string} is value that we need show in page
+   */
   convertDate(date) {
     const months = [
       'January',

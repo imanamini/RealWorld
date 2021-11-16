@@ -27,9 +27,20 @@ export default {
           this.post = response.data.article
         }
       })
-      .catch(() => {})
+      .catch((error) => {
+        console.log(error)
+      })
   },
   methods: {
+    /**
+     * Update post
+     *
+     * Author: Iman Amini
+     * last edit: 1400/08/26 by Iman Amini
+     * inspector:
+     *
+     * @param post {Object} is post data
+     */
     updatePost(post) {
       this.$('input[type=submit]').prop('disabled', true)
       this.$axios
@@ -47,7 +58,9 @@ export default {
             }, 2000)
           }
         })
-        .catch(() => {})
+        .catch((error) => {
+          console.log(error)
+        })
     },
   },
 }

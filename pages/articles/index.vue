@@ -21,7 +21,7 @@
             <td>{{ article.title }}</td>
             <td>@{{ article.author.username }}</td>
             <td>{{ article.tagList.toString() }}</td>
-            <td>{{ article.body.substring(0, 19) }}...</td>
+            <td>{{ article.body.substring(0, 19) }}{{article.body.length > 20 ? '...' : ''}}</td>
             <td>{{ convertDate(article.createdAt) }}</td>
             <td>
               <div class="btn-group float-right">
@@ -115,8 +115,8 @@ export default {
             this.articles = response.data.articles
           }
         })
-        .catch(() => {
-          this.registerError = true
+        .catch((error) => {
+          console.log(error)
         })
     },
   },
@@ -124,6 +124,11 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 768px) {
+  main {
+    margin-left: 181px !important;
+  }
+}
 main {
   margin-left: 281px;
   padding-right: 30px;
