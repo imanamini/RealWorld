@@ -4,7 +4,7 @@
     <span class="fs-16 text-white ml-3 pl-1">
       Welcome {{ parseJwt().username }}
     </span>
-    <button class="btn btn-logout ml-auto" @click="logout()">logout</button>
+    <button class="btn btn-logout ml-auto" @click="logout()">Logout</button>
   </header>
 </template>
 
