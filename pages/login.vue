@@ -104,6 +104,10 @@ export default {
         })
         .catch(() => {
           this.loginError = true
+          this.showToastMessage(
+            '<b>Login Failed!</b> User name and/or Password is invalid',
+            true
+          )
         })
     },
   },

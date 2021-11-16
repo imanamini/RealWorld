@@ -33,6 +33,11 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 768px) {
+  .sidenav {
+    width: 150px !important;
+  }
+}
 .sidenav {
   background-color: #1c7cd5;
   position: fixed;
